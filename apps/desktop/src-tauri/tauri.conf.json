@@ -47,11 +47,11 @@
     "windows": {
       "webviewInstallMode": {
         "type": "downloadBootstrapper"
+      },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["SimpChinese", "English"]
       }
-    },
-    "nsis": {
-      "installMode": "currentUser",
-      "languages": ["SimpChinese", "English"]
     }
   }
 }
