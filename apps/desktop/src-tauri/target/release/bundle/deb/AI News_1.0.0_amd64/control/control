@@ -1,0 +1,9 @@
+Package: ai-news
+Version: 1.0.0
+Architecture: amd64
+Installed-Size: 11049
+Maintainer: AI News
+Priority: optional
+Depends: libayatana-appindicator3-1, libwebkit2gtk-4.1-0, libgtk-3-0
+Description: AI News 桌面端 - 悬浮挂件形态
+ (none)

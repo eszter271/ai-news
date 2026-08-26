@@ -1,0 +1,19 @@
+{
+  "name": "@ai-news/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tauri 桌面端壳：复用 web 前端，提供悬浮挂件形态（始终置顶 + 开机自启）",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-autostart": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0"
+  }
+}

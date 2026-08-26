@@ -1,0 +1,89 @@
+name: Build Desktop
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Setup Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y -qq libwebkit2gtk-4.1-dev build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libjavascriptcoregtk-4.1-dev patchelf
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Tauri
+        run: pnpm --filter @ai-news/desktop tauri build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-news-linux
+          path: apps/desktop/src-tauri/target/release/bundle/**/*.{deb,appimage,AppImage}
+          if-no-files-found: warn
+          retention-days: 30
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Tauri
+        run: pnpm --filter @ai-news/desktop tauri build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-news-windows
+          path: apps/desktop/src-tauri/target/release/bundle/**/*.{msi,exe}
+          if-no-files-found: warn
+          retention-days: 30
+
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Tauri
+        run: pnpm --filter @ai-news/desktop tauri build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-news-macos
+          path: apps/desktop/src-tauri/target/release/bundle/**/*.{app,dmg}
+          if-no-files-found: warn
+          retention-days: 30

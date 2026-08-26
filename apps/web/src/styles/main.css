@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+/* ============= 设计 tokens（提取自设计稿） ============= */
+:root {
+  /* bg */
+  --background: #ffffff;
+  --card: #ffffff;
+  --popover: #ffffff;
+  --muted: #f5f5f5;
+
+  /* text */
+  --foreground: #0a0a0a;
+  --card-foreground: #0a0a0a;
+  --popover-foreground: #0a0a0a;
+  --primary-foreground: #fafafa;
+  --secondary-foreground: #171717;
+  --muted-foreground: #858585;
+  --accent-foreground: #171717;
+  --destructive-foreground: #ffffff;
+
+  /* accent */
+  --primary: #121212;
+  --secondary: #f5f5f5;
+  --accent: #f5f5f5;
+  --input: #e5e5e5;
+  --ring: #0d0d0d;
+
+  /* border */
+  --border: #e8e8e8;
+
+  /* status */
+  --destructive: #e7000b;
+  --success: #62d178;
+
+  /* special */
+  --color-favorite: #f59e0b;
+
+  /* font */
+  --font-sans: Geist, ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-serif: 'DM Serif Display', ui-serif, serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* radius */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --card: #171717;
+  --popover: #262626;
+  --muted: #262626;
+
+  --foreground: #fafafa;
+  --card-foreground: #fafafa;
+  --popover-foreground: #fafafa;
+  --primary-foreground: #171717;
+  --secondary-foreground: #fafafa;
+  --muted-foreground: #a1a1a1;
+  --accent-foreground: #fafafa;
+  --destructive-foreground: #fafafa;
+
+  --primary: #e5e5e5;
+  --secondary: #262626;
+  --accent: #404040;
+  --input: #343434;
+  --ring: #737373;
+
+  --border: #282828;
+  --destructive: #ff6467;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-favorite: var(--color-favorite);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --radius-sm: 0.25rem;
+  --radius-md: var(--radius);
+  --radius-lg: 1rem;
+}
+
+/* ============= 基础样式 ============= */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0em;
+    overflow: hidden; /* 桌面挂件内部自定义滚动 */
+  }
+  button {
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+  input {
+    font: inherit;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+/* ============= 通用动画 ============= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.anim-fade-in-up {
+  animation: fadeInUp 0.32s cubic-bezier(0.3, 0, 0, 1) both;
+}
+.anim-fade-in {
+  animation: fadeIn 0.2s ease both;
+}
+.anim-scale-in {
+  animation: scaleIn 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-in-up,
+  .anim-fade-in,
+  .anim-scale-in {
+    animation-duration: 0.01ms !important;
+  }
+}

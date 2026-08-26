@@ -1,0 +1,31 @@
+{
+  "name": "ai-news",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI 资讯聚合 App - 桌面 Tauri 挂件 + 移动 Web 响应式",
+  "scripts": {
+    "dev:web": "pnpm --filter @ai-news/web dev",
+    "build:web": "pnpm --filter @ai-news/web build",
+    "preview:web": "pnpm --filter @ai-news/web preview",
+    "dev:desktop": "pnpm --filter @ai-news/desktop tauri dev",
+    "build:desktop": "pnpm --filter @ai-news/desktop tauri build",
+    "build:shared": "pnpm --filter @ai-news/shared build",
+    "dev:backend": "pnpm build:shared && pnpm --filter @ai-news/backend start:dev",
+    "build:backend": "pnpm build:shared && pnpm --filter @ai-news/backend build",
+    "start:backend": "pnpm --filter @ai-news/backend start:prod",
+    "dev": "pnpm dev:web & pnpm dev:backend",
+    "build": "pnpm build:shared && pnpm build:web && pnpm build:backend",
+    "lint": "pnpm -r --if-present lint"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.5.2",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bcrypt",
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}

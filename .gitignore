@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.cache
+coverage
+.turbo
+*.tsbuildinfo
+# Tauri
+src-tauri/target
+src-tauri/gen
+# IDE
+.vscode/.idea
