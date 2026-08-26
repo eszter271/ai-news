@@ -1,9 +1,0 @@
-[Desktop Entry]
-Categories=Network;News;
-Comment=AI News 桌面端 - 悬浮挂件形态
-Exec=ai-news-desktop
-StartupWMClass=ai-news-desktop
-Icon=ai-news-desktop
-Name=AI News
-Terminal=false
-Type=Application
