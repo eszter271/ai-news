@@ -42,7 +42,7 @@
   "bundle": {
     "active": true,
     "targets": ["deb", "appimage", "msi", "nsis", "app", "dmg"],
-    "icon": ["icons/icon.png"],
+    "icon": ["icons/icon.png", "icons/icon.ico"],
     "category": "News"
   }
 }
