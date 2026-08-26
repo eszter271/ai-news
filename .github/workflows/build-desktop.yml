@@ -30,7 +30,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ai-news-linux
-          path: apps/desktop/src-tauri/target/release/bundle/**/*.{deb,appimage,AppImage}
+          path: |
+            apps/desktop/src-tauri/target/release/bundle/**/*.deb
+            apps/desktop/src-tauri/target/release/bundle/**/*.AppImage
           if-no-files-found: warn
           retention-days: 30
 
@@ -57,7 +59,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ai-news-windows
-          path: apps/desktop/src-tauri/target/release/bundle/**/*.{msi,exe}
+          path: |
+            apps/desktop/src-tauri/target/release/bundle/**/*.msi
+            apps/desktop/src-tauri/target/release/bundle/**/*.exe
           if-no-files-found: warn
           retention-days: 30
 
@@ -84,6 +88,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ai-news-macos
-          path: apps/desktop/src-tauri/target/release/bundle/**/*.{app,dmg}
+          path: |
+            apps/desktop/src-tauri/target/release/bundle/**/*.app
+            apps/desktop/src-tauri/target/release/bundle/**/*.dmg
           if-no-files-found: warn
           retention-days: 30
