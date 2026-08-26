@@ -43,6 +43,15 @@
     "active": true,
     "targets": ["deb", "appimage", "msi", "nsis", "app", "dmg"],
     "icon": ["icons/icon.png", "icons/icon.ico"],
-    "category": "News"
+    "category": "News",
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      }
+    },
+    "nsis": {
+      "installMode": "currentUser",
+      "languages": ["SimpChinese", "English"]
+    }
   }
 }
