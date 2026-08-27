@@ -43,7 +43,7 @@
     "category": "News",
     "windows": {
       "webviewInstallMode": {
-        "type": "offlineInstaller"
+        "type": "downloadBootstrapper"
       },
       "nsis": {
         "installMode": "currentUser",

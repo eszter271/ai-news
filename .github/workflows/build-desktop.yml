@@ -50,19 +50,28 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Clean build artifacts
+        run: |
+          Remove-Item -Recurse -Force -ErrorAction SilentlyContinue apps\desktop\src-tauri\target
+          Remove-Item -Recurse -Force -ErrorAction SilentlyContinue apps\web\dist
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build Tauri
         run: pnpm --filter @ai-news/desktop tauri build
+
+      - name: List build output
+        run: |
+          Get-ChildItem -Recurse apps\desktop\src-tauri\target\release\bundle\ -ErrorAction SilentlyContinue | Select-Object FullName, Length
 
       - uses: actions/upload-artifact@v4
         with:
           name: ai-news-windows
           path: |
-            apps/desktop/src-tauri/target/release/bundle/**/*.msi
-            apps/desktop/src-tauri/target/release/bundle/**/*.exe
-          if-no-files-found: warn
+            apps/desktop/src-tauri/target/release/bundle/nsis/**/*.exe
+            apps/desktop/src-tauri/target/release/bundle/msi/**/*.msi
+          if-no-files-found: error
           retention-days: 30
 
   build-macos:
