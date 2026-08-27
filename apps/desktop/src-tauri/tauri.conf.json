@@ -23,11 +23,8 @@
         "decorations": false,
         "transparent": true,
         "alwaysOnTop": true,
-        "skipTaskbar": true,
         "shadow": true,
-        "center": false,
-        "x": 24,
-        "y": 80
+        "center": true
       }
     ],
     "security": {
